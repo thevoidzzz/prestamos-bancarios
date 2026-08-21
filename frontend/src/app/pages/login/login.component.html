@@ -1,0 +1,20 @@
+<div class="login-wrap">
+  <section class="login-card">
+    <h1>Iniciar Sesión</h1>
+    <p class="hint">Ingrese sus credenciales para acceder</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <label class="label" for="email">Email</label>
+      <input id="email" class="field" type="email" formControlName="email" placeholder="Email" autocomplete="username">
+
+      <label class="label" for="password">Contraseña</label>
+      <input id="password" class="field" type="password" formControlName="password" placeholder="Contraseña" autocomplete="current-password">
+
+      @if (error) {
+        <p class="error">{{ error }}</p>
+      }
+
+      <button class="btn btn-black btn-full" type="submit" [disabled]="enviando">Ingresar</button>
+    </form>
+  </section>
+</div>

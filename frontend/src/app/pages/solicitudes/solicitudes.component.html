@@ -1,0 +1,34 @@
+<div class="page">
+  <header class="topbar">
+    <h1>Bienvenido, {{ auth.actual()?.nombreCompleto }}</h1>
+    <button type="button" class="btn btn-black" (click)="auth.logout()">Cerrar Sesión</button>
+  </header>
+
+  <div class="tabs">
+    <span class="tab">Préstamos</span>
+  </div>
+
+  <section class="card">
+    <h2>Solicitar Préstamo</h2>
+    <p class="hint">Ingrese el monto que desea solicitar</p>
+    <form [formGroup]="form" (ngSubmit)="solicitar()">
+      <label class="label" for="monto">Monto</label>
+      <input id="monto" class="field" type="number" min="1" formControlName="monto" placeholder="Monto">
+      @if (error) {
+        <p class="error">{{ error }}</p>
+      }
+      <button class="btn btn-black" type="submit" [disabled]="enviando">Solicitar</button>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>Mis Préstamos</h2>
+    @if (prestamos.length === 0) {
+      <p class="hint">Aún no tienes solicitudes.</p>
+    } @else {
+      @for (item of prestamos; track item.id) {
+        <p class="list-line">Monto: {{ dinero(item.monto) }} - Estado: {{ etiqueta(item.estado) }}</p>
+      }
+    }
+  </section>
+</div>

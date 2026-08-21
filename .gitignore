@@ -1,0 +1,14 @@
+# backend
+backend/target/
+*.class
+*.jar
+.idea/
+*.iml
+
+# frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+
+*.log
+.DS_Store

@@ -1,0 +1,33 @@
+.nav-bar {
+  background: #12325c;
+  color: #fff;
+  padding: 0.85rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.brand {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.links a {
+  color: #d7e4f5;
+  text-decoration: none;
+}
+
+.user {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}

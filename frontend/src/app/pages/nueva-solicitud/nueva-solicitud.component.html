@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <a routerLink="/solicitudes">Volver</a>
+    <div class="card mt-3">
+      <div class="card-body">
+        <h1 class="h4">Solicitar prestamo</h1>
+        <p class="text-muted">Monto entre 500.000 y 50.000.000. Plazo de 6 a 60 meses.</p>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <div class="mb-3">
+            <label class="form-label" for="monto">Monto (COP)</label>
+            <input id="monto" type="number" class="form-control" formControlName="monto">
+            @if (form.controls.monto.touched && form.controls.monto.invalid) {
+              <div class="text-danger small">Revisa el monto.</div>
+            }
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="plazoMeses">Plazo en meses</label>
+            <input id="plazoMeses" type="number" class="form-control" formControlName="plazoMeses">
+            @if (form.controls.plazoMeses.touched && form.controls.plazoMeses.invalid) {
+              <div class="text-danger small">El plazo debe estar entre 6 y 60.</div>
+            }
+          </div>
+          @if (error) {
+            <div class="alert alert-danger">{{ error }}</div>
+          }
+          <button class="btn btn-primary" [disabled]="enviando">Enviar solicitud</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

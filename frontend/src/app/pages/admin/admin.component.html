@@ -1,0 +1,24 @@
+<div class="page">
+  <header class="topbar">
+    <h1>Hola, {{ auth.actual()?.nombreCompleto }}</h1>
+    <button type="button" class="btn btn-black" (click)="auth.logout()">Cerrar Sesión</button>
+  </header>
+
+  <section class="card">
+    <h2>Gestionar Solicitudes de Préstamos</h2>
+    @if (error) {
+      <p class="error">{{ error }}</p>
+    }
+    @for (item of prestamos; track item.id) {
+      <article class="loan-item">
+        <p>Usuario: {{ item.solicitante }} - Monto: {{ dinero(item.monto) }} - Estado: {{ etiqueta(item.estado) }}</p>
+        @if (item.estado === 'PENDIENTE') {
+          <div class="actions">
+            <button type="button" class="btn btn-black" (click)="aprobar(item)">Aprobar</button>
+            <button type="button" class="btn btn-red" (click)="rechazar(item)">Rechazar</button>
+          </div>
+        }
+      </article>
+    }
+  </section>
+</div>

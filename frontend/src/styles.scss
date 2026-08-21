@@ -1,0 +1,188 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: #fff;
+  color: #111;
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+.page {
+  width: min(520px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 48px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-weight: 700;
+}
+
+.btn {
+  border: 0;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-black {
+  background: #111;
+  color: #fff;
+}
+
+.btn-red {
+  background: #e57373;
+  color: #fff;
+}
+
+.btn-full {
+  width: 100%;
+  padding: 12px 16px;
+}
+
+.tabs {
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 6px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  display: inline-block;
+  background: #fff;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-weight: 600;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.card h2 {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+}
+
+.hint {
+  margin: 0 0 16px;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.field {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  margin-bottom: 16px;
+  outline: none;
+}
+
+.field:focus {
+  border-color: #111;
+}
+
+.list-line {
+  margin: 0 0 10px;
+  line-height: 1.5;
+}
+
+.loan-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.loan-item p {
+  margin: 0 0 10px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.error {
+  color: #b42318;
+  font-size: 0.9rem;
+  margin: 0 0 12px;
+}
+
+.login-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.login-card {
+  width: min(400px, 100%);
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 32px 28px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.login-card h1 {
+  margin: 0 0 6px;
+  font-size: 1.7rem;
+}
+
+@media (max-width: 600px) {
+  .page {
+    width: calc(100% - 24px);
+    padding-top: 18px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+  }
+
+  .login-card {
+    padding: 24px 18px;
+  }
+}

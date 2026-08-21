@@ -1,0 +1,16 @@
+@if (sesion$ | async; as sesion) {
+  <nav class="nav-bar">
+    <a routerLink="/solicitudes" class="brand">Banco Makers</a>
+    <div class="links">
+      <a routerLink="/solicitudes">Mis solicitudes</a>
+      @if (sesion.rol !== 'ADMIN') {
+        <a routerLink="/solicitudes/nueva">Pedir prestamo</a>
+      }
+      @if (sesion.rol === 'ADMIN') {
+        <a routerLink="/admin">Aprobar solicitudes</a>
+      }
+      <span class="user">{{ sesion.nombreCompleto }}</span>
+      <button type="button" class="btn btn-sm btn-outline-light" (click)="auth.logout()">Salir</button>
+    </div>
+  </nav>
+}
