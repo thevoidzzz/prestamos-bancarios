@@ -23,7 +23,7 @@ export class SolicitudesComponent implements OnInit {
   enviando = false;
 
   form = this.fb.nonNullable.group({
-    monto: ['', [Validators.required, Validators.min(1)]]
+    monto: ['', [Validators.required, Validators.min(1000), Validators.max(50000000)]]
   });
 
   ngOnInit(): void {

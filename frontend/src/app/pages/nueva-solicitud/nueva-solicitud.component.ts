@@ -21,7 +21,7 @@ export class NuevaSolicitudComponent {
   enviando = false;
 
   form = this.fb.nonNullable.group({
-    monto: [1000000, [Validators.required, Validators.min(500000), Validators.max(50000000)]],
+    monto: [1000000, [Validators.required, Validators.min(1000), Validators.max(50000000)]],
     plazoMeses: [12, [Validators.required, Validators.min(6), Validators.max(60)]]
   });
 

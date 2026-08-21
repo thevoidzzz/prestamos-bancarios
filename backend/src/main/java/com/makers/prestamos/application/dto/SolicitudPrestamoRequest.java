@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 public class SolicitudPrestamoRequest {
 
     @NotNull
-    @DecimalMin(value = "1", message = "El monto debe ser mayor a 0")
+    @DecimalMin(value = "1000", message = "El monto minimo es 1.000")
     @DecimalMax(value = "50000000", message = "El monto maximo es 50.000.000")
     private BigDecimal monto;
 

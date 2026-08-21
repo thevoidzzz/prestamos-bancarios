@@ -33,7 +33,7 @@ npm start
 - El admin ve todas las solicitudes y puede aprobar o rechazar.
 - Un cliente no ve prestamos de otra persona.
 - Una solicitud ya decidida no se vuelve a decidir.
-- El monto debe ser mayor a 0.
+- El monto debe estar entre 1.000 y 50.000.000.
 
 ## Estructura del backend
 

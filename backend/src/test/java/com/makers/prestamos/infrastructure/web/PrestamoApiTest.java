@@ -84,7 +84,7 @@ class PrestamoApiTest {
         mockMvc.perform(post("/api/prestamos")
                         .header("Authorization", "Bearer " + tokenMaria)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"monto\":0,\"plazoMeses\":12}"))
+                        .content("{\"monto\":999,\"plazoMeses\":12}"))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.codigo", is("VALIDACION")));
     }

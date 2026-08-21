@@ -10,10 +10,13 @@
 
   <section class="card">
     <h2>Solicitar Préstamo</h2>
-    <p class="hint">Ingrese el monto que desea solicitar</p>
+    <p class="hint">Ingrese un monto entre 1.000 y 50.000.000</p>
     <form [formGroup]="form" (ngSubmit)="solicitar()">
       <label class="label" for="monto">Monto</label>
-      <input id="monto" class="field" type="number" min="1" formControlName="monto" placeholder="Monto">
+      <input id="monto" class="field" type="number" min="1000" max="50000000" formControlName="monto" placeholder="Monto">
+      @if (form.controls.monto.touched && form.controls.monto.invalid) {
+        <p class="error">El monto debe estar entre 1.000 y 50.000.000</p>
+      }
       @if (error) {
         <p class="error">{{ error }}</p>
       }
