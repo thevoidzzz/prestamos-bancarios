@@ -1,10 +1,10 @@
-# Sistema de prestamos bancarios
+# Bank loan system
 
-API REST con Spring Boot y un front en Angular para solicitar, aprobar o rechazar prestamos.
+REST API with Spring Boot and an Angular front end to request, approve, or reject loans.
 
-## Como correrlo
+## How to run
 
-Java 21, Maven y Node 18+.
+Java 21, Maven, and Node 18+.
 
 ```bash
 cd backend
@@ -17,42 +17,42 @@ npm install
 npm start
 ```
 
-- Front: http://127.0.0.1:14209
+- Front end: http://127.0.0.1:14209
 - API: http://127.0.0.1:18473
-- Consola H2: http://127.0.0.1:18473/h2-console  
+- H2 console: http://127.0.0.1:18473/h2-console  
   JDBC URL: `jdbc:h2:mem:prestamos`
 
-| usuario            | clave | rol     |
-|--------------------|-------|---------|
-| usuario@test.com   | 123   | CLIENTE |
-| admin@test.com     | 123   | ADMIN   |
+| user               | password | role   |
+|--------------------|----------|--------|
+| usuario@test.com   | 123      | CLIENTE |
+| admin@test.com     | 123      | ADMIN  |
 
-## Funcionalidad
+## Behavior
 
-- El cliente inicia sesion, pide un prestamo (monto) y consulta el estado.
-- El admin ve todas las solicitudes y puede aprobar o rechazar.
-- Un cliente no ve prestamos de otra persona.
-- Una solicitud ya decidida no se vuelve a decidir.
-- El monto debe estar entre 1.000 y 50.000.000.
+- A client signs in, requests a loan (amount), and checks its status.
+- An admin sees every request and can approve or reject it.
+- A client cannot see another person's loans.
+- A request that already has a decision cannot be decided again.
+- The amount must be between 1,000 and 50,000,000.
 
-## Estructura del backend
+## Backend layout
 
 ```
-domain/           entidades y reglas de negocio
-domain/port       contratos de persistencia
-application/      casos de uso y DTOs
-infrastructure/   JPA, seguridad JWT, cache, controllers
+domain/           entities and business rules
+domain/port       persistence contracts
+application/      use cases and DTOs
+infrastructure/   JPA, JWT security, cache, controllers
 ```
 
-Las reglas (aprobar/rechazar, permisos) estan en el dominio (`Prestamo.decidir`), no en el controller.
+The rules (approve, reject, permissions) live in the domain (`Prestamo.decidir`), not in the controller.
 
-## Tecnologias
+## Stack
 
 - Spring Boot, Spring Data JPA, Hibernate Validator, Spring Security (JWT)
-- Cache Caffeine en `GET /api/prestamos/{id}/estado` (60s; se limpia al decidir)
-- `@Transactional` en la aprobacion/rechazo
-- H2 en memoria (se puede cambiar a Postgres cambiando driver y URL)
-- Angular: Reactive Forms, interceptor JWT, `authGuard` y `adminGuard`
+- Caffeine cache on `GET /api/prestamos/{id}/estado` (60s; cleared when a decision is made)
+- `@Transactional` on approve and reject
+- In-memory H2 (switch to Postgres by changing the driver and the URL)
+- Angular: reactive forms, JWT interceptor, `authGuard`, and `adminGuard`
 
 ## Tests
 
@@ -63,13 +63,13 @@ mvn -B test
 
 ## Endpoints
 
-| Metodo | Ruta | Notas |
+| Method | Path | Notes |
 |--------|------|--------|
-| POST | `/api/auth/login` | publico |
-| GET | `/api/auth/me` | autenticado |
-| POST | `/api/prestamos` | cliente |
-| GET | `/api/prestamos` | cliente: los suyos; admin: todos |
-| GET | `/api/prestamos/{id}` | autenticado |
-| GET | `/api/prestamos/{id}/estado` | autenticado, con cache |
-| PUT | `/api/prestamos/{id}/decision` | solo ADMIN |
-| GET/POST | `/api/usuarios` | solo ADMIN |
+| POST | `/api/auth/login` | public |
+| GET | `/api/auth/me` | authenticated |
+| POST | `/api/prestamos` | client |
+| GET | `/api/prestamos` | client: their own; admin: all |
+| GET | `/api/prestamos/{id}` | authenticated |
+| GET | `/api/prestamos/{id}/estado` | authenticated, cached |
+| PUT | `/api/prestamos/{id}/decision` | ADMIN only |
+| GET/POST | `/api/usuarios` | ADMIN only |
